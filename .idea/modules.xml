@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/COSC-3P97.iml" filepath="$PROJECT_DIR$/COSC-3P97.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/simplelib/simplelib.iml" filepath="$PROJECT_DIR$/simplelib/simplelib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/simplelibtests/simplelibtests.iml" filepath="$PROJECT_DIR$/simplelibtests/simplelibtests.iml" />
     </modules>
   </component>
 </project>
