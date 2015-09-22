@@ -1,27 +1,30 @@
 package com.github.curtesmith.helloworld;
 
-import android.app.Fragment;
-import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class DisplayMessageActivity extends AppCompatActivity {
+
+import com.github.curtesmith.lib.DisplayMessageModel;
+
+import java.util.Observable;
+import java.util.Observer;
+
+public class DisplayMessageActivity extends AppCompatActivity implements Observer {
+    private TextView textView;
+    private DisplayMessageModel displayMessageModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
-        String message = intent.getStringExtra(HelloWorldActivity.EXTRA_MESSAGE);
-        TextView textView = new TextView(this);
+        textView = new TextView(this);
         textView.setTextSize(40);
-        textView.setText(message);
+
+        displayMessageModel = new DisplayMessageModel();
+        displayMessageModel.addObserver(this);
+        displayMessageModel.setMessage(getIntent().getStringExtra(HelloWorldActivity.EXTRA_MESSAGE));
+
         setContentView(textView);
     }
 
@@ -41,4 +44,8 @@ public class DisplayMessageActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void update(Observable observable, Object data) {
+        textView.setText(displayMessageModel.getMessage());
+    }
 }
