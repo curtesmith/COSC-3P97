@@ -13,7 +13,6 @@ import java.util.Observer;
 
 public class DisplayMessageActivity extends AppCompatActivity implements Observer {
     private TextView textView;
-    private DisplayMessageModel displayMessageModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +20,7 @@ public class DisplayMessageActivity extends AppCompatActivity implements Observe
         textView = new TextView(this);
         textView.setTextSize(40);
 
+        DisplayMessageModel displayMessageModel;
         displayMessageModel = new DisplayMessageModel();
         displayMessageModel.addObserver(this);
         displayMessageModel.setMessage(getIntent().getStringExtra(HelloWorldActivity.EXTRA_MESSAGE));
@@ -46,6 +46,6 @@ public class DisplayMessageActivity extends AppCompatActivity implements Observe
 
     @Override
     public void update(Observable observable, Object data) {
-        textView.setText(displayMessageModel.getMessage());
+        textView.setText(((DisplayMessageModel) observable).getMessage());
     }
 }

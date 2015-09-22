@@ -3,7 +3,7 @@ package com.github.curtesmith.lib;
 import java.util.Observable;
 
 public class DisplayMessageModel extends Observable {
-    String mMessage;
+    private String mMessage;
 
     public DisplayMessageModel() {}
 
